@@ -1,0 +1,360 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>O-Level Subject PDF Downloads</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet" />
+<style>
+  /* Your existing styles */
+  body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #1e1e2f, #27293d);
+    color: #fff;
+    overflow-x: hidden;
+  }
+  #hamburger {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    width: 35px;
+    height: 30px;
+    cursor: pointer;
+    z-index: 1100;
+  }
+  #hamburger span {
+    display: block;
+    height: 4px;
+    background: #00d9ff;
+    margin: 6px 0;
+    border-radius: 2px;
+    transition: 0.3s;
+  }
+  #hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(7px, 7px);
+  }
+  #hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+  #hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+  }
+  #sidebar {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    height: 100vh;
+    background: #222640;
+    padding-top: 3rem;
+    transition: left 0.3s ease;
+    z-index: 1000;
+  }
+  #sidebar.active {
+    left: 0;
+  }
+  #sidebar ul {
+    list-style: none;
+    padding: 0;
+  }
+  #sidebar ul li {
+    margin: 1.5rem 0;
+  }
+  #sidebar ul li a {
+    color: #00d9ff;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.8rem 2rem;
+    display: block;
+    border-radius: 0 25px 25px 0;
+  }
+  #sidebar ul li a:hover {
+    background: #00b4cc;
+    color: #fff;
+  }
+  #content {
+    transition: margin-left 0.3s ease;
+    padding: 2rem;
+    margin-left: 0;
+  }
+  #content.shifted {
+    margin-left: 250px;
+  }
+  main {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    animation: fadeInDown 1s ease forwards;
+    text-align: center;
+  }
+  #search {
+    width: 100%;
+    max-width: 400px;
+    font-size: 1.1rem;
+    padding: 0.5rem 1rem;
+    margin: 0 auto 2rem auto;
+    display: block;
+    border-radius: 0.6rem;
+    border: none;
+    outline: none;
+    box-shadow: 0 0 10px rgba(0,217,255,0.5);
+    transition: box-shadow 0.3s ease;
+  }
+  #search:focus {
+    box-shadow: 0 0 15px #00d9ff;
+  }
+  .subjects {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    width: 100%;
+  }
+  .card {
+    background: #2e2f45;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s, background 0.3s;
+    cursor: pointer;
+    animation: fadeInUp 1s ease;
+    text-align: center;
+    user-select: none;
+  }
+  .card:hover {
+    transform: scale(1.05);
+    background: #3b3c5b;
+  }
+  .card h2 {
+    margin-top: 0;
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+  }
+  .support {
+    text-align: center;
+    margin-top: 3rem;
+    padding: 2rem;
+    background: rgba(255,255,255,0.05);
+    border-radius: 1rem;
+    font-size: 1.1rem;
+    color: #ccc;
+  }
+  .support strong {
+    color: #00d9ff;
+  }
+  footer {
+    text-align: center;
+    padding: 1rem 0;
+    font-size: 0.9rem;
+    color: #999;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 2rem;
+  }
+  /* Animations */
+  @keyframes fadeInDown {
+    from {
+      opacity: 0;
+      transform: translateY(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
+</head>
+<body>
+<div id="hamburger">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+
+<nav id="sidebar">
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="subject_selection.html">Select Subject</a></li>
+    <li><a href="download.html">Download PDFs</a></li>
+    <li><a href="#support-contact">Support</a></li>
+  </ul>
+</nav>
+
+<div id="content">
+  <main>
+    <h1>📚 PICK A PREFERRED SUBJECT </h1>
+
+    <!-- Search Input -->
+    <input type="text" id="search" placeholder="Search subjects..." aria-label="Search subjects" />
+
+    <!-- Subjects List -->
+    <div class="subjects" id="subjects-list">
+      <div class="card" data-subject="Biology">
+        <h2>Biology</h2>
+      </div>
+      <div class="card" data-subject="Physics">
+        <h2>Physics</h2>
+      </div>
+      <div class="card" data-subject="Chemistry">
+        <h2>Chemistry</h2>
+      </div>
+      <div class="card" data-subject="ICT">
+        <h2>ICT</h2>
+      </div>
+    </div>
+
+    <!-- Support Contact Section -->
+    <div class="support" id="support-contact">
+      <p><strong>Support Contact:</strong></p>
+      <p>Email: <a href="mailto:hpro453176@gmail.com" style="color: #00d9ff;">hpro453176@gmail.com</a></p>
+      <p>Phone: <a href="tel:+256752453176" style="color: #00d9ff;">+256 752 453 176</a></p>
+    </div>
+
+  </main>
+  <footer>
+    COPYRIGHT PYTHA PDFS 2025
+  </footer>
+</div>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const sidebar = document.getElementById('sidebar');
+  const content = document.getElementById('content');
+
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    sidebar.classList.toggle('active');
+    content.classList.toggle('shifted');
+  });
+
+  const searchInput = document.getElementById('search');
+  const subjectsList = document.getElementById('subjects-list');
+
+  // PDFs with correct file paths and names
+  const subjectPDFs = {
+    'Biology': [
+      {name: 'biology full revision', link: 'download.html?subject=biology&file=biology%20full%20revision.pdf'},
+      {name: 'biology o level items', link: 'download.html?subject=biology&file=biology%20o%20level%20items.pdf'},
+      {name: 'o level full notes', link: 'download.html?subject=biology&file=o%20level%20full%20notes.pdf'},
+      {name: 's3 biology', link: 'download.html?subject=biology&file=s3%20biology.pdf'},
+      {name: 's4 biology seminar', link: 'download.html?subject=biology&file=s4%20biology%20seminar.pdf'}
+    ],
+    'Physics': [
+      {name: 'grand seminar physics', link: 'download.html?subject=physics&file=grand%20seminar%20physics.pdf'},
+      {name: 'o level physics notes', link: 'download.html?subject=physics&file=o%20level%20physics%20notes.pdf'},
+      {name: 'physics definitions laws principles', link: 'download.html?subject=physics&file=physics%20definitions%20laws%20principles.pdf'},
+      {name: 'physics notes2017', link: 'download.html?subject=physics&file=physics%20notes2017.pdf'},
+      {name: 'space physics simplified', link: 'download.html?subject=physics&file=space%20physics%20simplified.pdf'}
+    ],
+    'Chemistry': [
+      {name: 'o level chemistry notes', link: 'download.html?subject=chemistry&file=o%20level%20chemistry%20notes.pdf'},
+      {name: 'chemistry items', link: 'download.html?subject=chemistry&file=chemistry%20items.pdf'},
+      {name: 'chemistry seminar 2025', link: 'download.html?subject=chemistry&file=chemistry%20seminar%202025.pdf'},
+      {name: 'chemistry seminar', link: 'download.html?subject=chemistry&file=chemistry%20seminar.pdf'},
+      {name: 'extraction of metals', link: 'download.html?subject=chemistry&file=extraction%20of%20metals.pdf'}
+    ],
+    'ICT': [
+      {name: 'ict full notes', link: 'download.html?subject=ict&file=ict%20full%20notes.pdf'},
+      {name: 'ict scenarios', link: 'download.html?subject=ict&file=ict%20scenarios.pdf'},
+      {name: 's4 ict notes by pytha', link: 'download.html?subject=ict&file=s4%20ict%20notes%20by%20pytha.pdf'}
+    ]
+  };
+
+  // When a subject card is clicked, open a popup or new window with the PDF list
+  subjectsList.querySelectorAll('.card').forEach(card => {
+    card.addEventListener('click', () => {
+      const subject = card.getAttribute('data-subject');
+      const pdfs = subjectPDFs[subject] || [];
+
+      // Create a modal or simple alert listing all PDFs as links, or open a new page if preferred
+      // For simplicity here, open a small popup with links to each PDF
+      let pdfList = `📄 PDFs for ${subject}:\n\n`;
+      pdfs.forEach(pdf => {
+        pdfList += `${pdf.name}: ${pdf.link}\n`;
+      });
+      // Instead of alert, let's create a nicer UI modal or redirect to another page with the list
+      // But since you want buttons, let's do an inline popup div instead:
+
+      // Remove existing popup if any
+      let existingPopup = document.getElementById('pdf-popup');
+      if (existingPopup) existingPopup.remove();
+
+      const popup = document.createElement('div');
+      popup.id = 'pdf-popup';
+      popup.style.position = 'fixed';
+      popup.style.top = '50%';
+      popup.style.left = '50%';
+      popup.style.transform = 'translate(-50%, -50%)';
+      popup.style.background = '#2e2f45';
+      popup.style.padding = '2rem';
+      popup.style.borderRadius = '1rem';
+      popup.style.boxShadow = '0 0 20px rgba(0, 217, 255, 0.7)';
+      popup.style.zIndex = '2000';
+      popup.style.maxWidth = '400px';
+      popup.style.textAlign = 'center';
+
+      const title = document.createElement('h2');
+      title.textContent = `Download PDFs - ${subject}`;
+      title.style.marginBottom = '1rem';
+      popup.appendChild(title);
+
+      pdfs.forEach(pdf => {
+        const btn = document.createElement('a');
+        btn.href = pdf.link;
+        btn.textContent = pdf.name;
+        btn.setAttribute('download', '');
+        btn.style.display = 'block';
+        btn.style.background = '#00d9ff';
+        btn.style.color = '#1e1e2f';
+        btn.style.padding = '10px';
+        btn.style.margin = '10px 0';
+        btn.style.borderRadius = '0.6rem';
+        btn.style.textDecoration = 'none';
+        btn.style.fontWeight = '600';
+        btn.style.transition = 'background 0.3s ease';
+        btn.addEventListener('mouseover', () => btn.style.background = '#00b4cc');
+        btn.addEventListener('mouseout', () => btn.style.background = '#00d9ff');
+
+        popup.appendChild(btn);
+      });
+
+      // Close button
+      const closeBtn = document.createElement('button');
+      closeBtn.textContent = 'Close';
+      closeBtn.style.marginTop = '1rem';
+      closeBtn.style.padding = '10px 20px';
+      closeBtn.style.border = 'none';
+      closeBtn.style.borderRadius = '0.6rem';
+      closeBtn.style.background = '#ff5555';
+      closeBtn.style.color = 'white';
+      closeBtn.style.cursor = 'pointer';
+      closeBtn.addEventListener('click', () => popup.remove());
+      popup.appendChild(closeBtn);
+
+      document.body.appendChild(popup);
+    });
+  });
+
+  // Search filter for subjects
+  searchInput.addEventListener('input', () => {
+    const query = searchInput.value.toLowerCase();
+    subjectsList.querySelectorAll('.card').forEach(card => {
+      const subject = card.getAttribute('data-subject').toLowerCase();
+      card.style.display = subject.includes(query) ? '' : 'none';
+    });
+  });
+</script>
+</body>
+</html>
